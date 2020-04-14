@@ -1,0 +1,162 @@
+/* Variables */
+$primary-color: #56607d;
+
+$nav-color: whitesmoke;
+
+body {
+  box-sizing: border-box;
+}
+
+/* Reset */
+
+
+/* Base styles */
+
+body,p,a,ul,li{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+li{
+  list-style-type: none;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+nav {
+  height:50px;
+  color: $nav-color;
+  & > ul {
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    position:fixed;
+    background: $primary-color;
+    box-shadow: 0px 8px 6px -6px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+  }
+  & > li {
+    align-self: center;
+    justify-self: center;
+    color: $nav-color;
+  }
+  a {
+    color: $nav-color;
+    outline:none;
+  }
+  sup {
+    color: coral;
+    font-weight:bold;
+    background: green;
+    border-radius: 10px;
+    padding:2px;
+  }
+  .fas {
+    margin-right:4px;
+    font-size: 16px;
+  }
+  
+  .button {
+    padding: 14px;
+  }
+  .button:hover {
+    padding: 14px;
+    background: slategrey;
+  }
+  .more {
+    justify-self: flex-end;
+  }
+}
+
+.searchbox {
+  align-self: center;
+  justify-self: center;
+  color: $nav-color;
+  & > .search-container {
+    width:100%;
+    display:flex;
+  }
+  //Copied https://codepen.io/huange/pen/rbqsD?editors=1100
+  $searchborder : darkseagreen;
+  input{
+    border: 3px solid $searchborder;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: slategrey;
+  }  
+   button {
+    width: 40px;
+    height: 36px;
+    border: 1px solid $searchborder;
+    background: $searchborder;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
+
+.dropdown {
+  position: relative;
+  justify-self: flex-start;
+
+  &:hover .dropdown-content{
+    visibility: visible;
+  }
+
+  & > ul {
+    position: absolute;
+    border-bottom: 1px solid grey;
+    background: whitesmoke;
+    display: flex;
+    visibility:hidden;
+    flex-direction: column;
+    z-index:1;
+  }
+  & > ul > li {
+    color: black;
+    width:250px;
+  }
+  .dropdown-content-left {
+    position: absolute;
+    border: 1px solid black;
+    left: 100%;
+    top: 0;
+    background: azure;
+    visibility:hidden;
+    width: 60vw;
+    height: 75vh;
+  }
+  .dropdown-left:hover  .dropdown-content-left{
+    visibility:visible;
+  }
+}
+
+
+
+
+
+/* Fonts */
+
+/* Mobile Styles */
+
+@media screen and (min-width: 620px){
+
+}
+
+@media screen and (min-width: 960px){
+
+}
+
+@media screen and (min-width: 1200px){ 
+
+}
