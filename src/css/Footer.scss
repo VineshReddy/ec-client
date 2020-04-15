@@ -3,7 +3,7 @@
 footer {
   display: grid;
   padding: 5vh 0 0 0;
-  margin: 5px 0 0 0;
+  margin: 8px 0 0 0;
   grid-template-columns: repeat(12,1fr);
 
   row-gap: .5rem;
@@ -42,16 +42,17 @@ footer {
     color: #ccc;
     font-size: 0.8rem;
   }
-  .footer-list > h4 {
-    margin:0;
+  .footer-list  h5 {
     padding:0;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid whitesmoke;
   }
   
 
 
   .social-connect{
     grid-column: span 12;
-    font-size: 2em;
+    font-size: 1.8em;
     justify-self: center;
     align-self:center;
     margin: 0 0 1rem 0;
@@ -73,11 +74,12 @@ footer {
 @media screen and (min-width: 620px){
   footer {
     .social-connect{
-      grid-column: span 4;
+      grid-column: span 3;
+
     }
 
     .copyright {
-      grid-column: span 8;
+      grid-column: span 9;
     }
     
     .footer-list > section {
