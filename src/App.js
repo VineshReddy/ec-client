@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Main from './components/Main'
-import './App.scss'
+import './css/App.scss'
 import 'normalize.css'
 
 function App() {

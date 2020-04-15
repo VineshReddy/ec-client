@@ -1,7 +1,5 @@
-/* Variables */
-$primary-color: #56607d;
+@import 'Variables';
 
-$nav-color: whitesmoke;
 
 body {
   box-sizing: border-box;
@@ -63,6 +61,7 @@ nav {
   
   .button {
     padding: 14px;
+    cursor: pointer;
   }
   .button:hover {
     padding: 14px;
@@ -76,13 +75,11 @@ nav {
 .searchbox {
   align-self: center;
   justify-self: center;
-  color: $nav-color;
   & > .search-container {
     width:100%;
     display:flex;
   }
   //Copied https://codepen.io/huange/pen/rbqsD?editors=1100
-  $searchborder : darkseagreen;
   input{
     border: 3px solid $searchborder;
     border-right: none;
