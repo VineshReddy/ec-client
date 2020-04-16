@@ -1,0 +1,79 @@
+
+.account {
+  h3 {
+    color: slategrey;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .fas {
+    font-size: 3rem;
+  }
+
+  .account-items {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  a {
+    color: black;
+    margin: 10px;
+    width: 80%;
+    height: 60px;
+    grid-column: span 12;
+    justify-self:center;
+    align-self: center;
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 1rem;
+    border:1px solid lightgray;
+
+    .account-image {
+      grid-area: 1/1/4/4; 
+      justify-self:center;
+      align-self:center;
+    }
+    .account-title {
+      grid-area: 1/5/2/13; 
+      font-size: 1rem;
+      margin-bottom:10px;
+    }
+    .account-description {
+      grid-area: 2/5/4/13; 
+      font-size: 0.8rem;
+    }
+  }
+  a:hover {
+    background: lightgray;
+  }
+}
+
+
+
+@media screen and (min-width: 620px){
+  .account  {
+    margin: 0 auto;
+    a {
+      max-width: 25%;
+      min-width: 300px;
+      grid-column: span 6;
+    }
+  }
+}
+
+@media screen and (min-width: 960px){
+  .account {
+    width: 80%;
+  }
+
+}
+
+@media screen and (min-width: 1200px){ 
+  .account {
+    a {
+      grid-column: span 4;
+    }
+  }
+
+}

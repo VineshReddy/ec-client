@@ -42,7 +42,14 @@ const RenderCartItems = () => {
         </div>
       </section>
   ))
-  return cartItems
+  return (
+    <div class="cart-items">
+      {cartItems}
+      <div className="checkout">
+        <div className="button">Checkout</div>
+      </div>
+    </div>
+  )
 }
 
 const NoCartItems = () => {
@@ -58,13 +65,8 @@ const Cart = () => {
     <main class="cart">
       <h3>Shopping Cart</h3>
       {
-        cart.length ? 
-          <>
+        cart.length  ? 
           <RenderCartItems />
-            <div className="flex-end">
-              <button className="checkout">Checkout</button>
-            </div>
-          </>
           :
           <NoCartItems />
       }

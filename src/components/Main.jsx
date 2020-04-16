@@ -12,7 +12,7 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route path='/user/cart' component={Cart}  /> 
-          <Route path='/user' component={Account}  /> 
+          <Route exact path='/user' component={Account}  /> 
         </Switch>
         <Footer />
       </>
