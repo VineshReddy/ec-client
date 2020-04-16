@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect, useRouteMatch, useParams } from 'react-router-dom'
-import Header from './Header';
-import Footer from './Footer';
+import Header from './header';
+import Footer from './footer';
+import Cart from './user/Cart'
+import Account from './user/index.jsx'
 
 class Main extends Component {
   render() {
@@ -9,6 +11,8 @@ class Main extends Component {
       <>
         <Header />
         <Switch>
+          <Route path='/user/cart' component={Cart}  /> 
+          <Route path='/user' component={Account}  /> 
         </Switch>
         <Footer />
       </>

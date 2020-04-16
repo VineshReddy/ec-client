@@ -2,3 +2,43 @@
 @import 'Variables';
 @import 'Navbar';
 @import 'Footer';
+@import 'Cart';
+@import 'Account';
+
+
+body {
+  box-sizing: border-box;
+}
+
+body,p,a,ul,li{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline:none;
+}
+
+main {
+  min-height:50vh;
+}
+
+
+li{
+  list-style-type: none;
+}
+
+a {
+  color: $nav-color;
+  outline:none;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+}
+
