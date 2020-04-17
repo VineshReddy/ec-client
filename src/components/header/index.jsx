@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         <li className="dropdown ">
           <div className="dropdown-button button">
@@ -14,7 +14,7 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className="dropdown-content">
-            <li className="button dropdown-left">
+            <li className="dropdown-left">
               <div className="dropdown-button">
                 One
               </div>
@@ -23,7 +23,7 @@ const Navbar = () => {
               </ul>
             </li>
 
-            <li className="button dropdown-left">
+            <li className="dropdown-left">
               <div className="dropdown-button">
                 Two
               </div>

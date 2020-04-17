@@ -1,0 +1,38 @@
+
+.categories{
+  h3 {
+    color: slategrey;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .menu {
+    position: relative;
+    height: 100%;
+  }
+  .menu-open{
+    display:none;
+    position: absolute;
+    background-color: slategrey;
+    left: 5em;
+    top: 0;
+    height: 100%;
+  }
+  .side-nav > li:hover .menu-open {
+    display:block;
+    height:100%
+  }
+
+
+}
+
+
+
+@media screen and (min-width: 620px){
+}
+
+@media screen and (min-width: 960px){
+}
+
+@media screen and (min-width: 1200px){ 
+
+}

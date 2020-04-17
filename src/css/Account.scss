@@ -52,21 +52,18 @@
 
 
 @media screen and (min-width: 620px){
+}
+
+@media screen and (min-width: 960px){
   .account  {
     margin: 0 auto;
+    width: 80%;
     a {
       max-width: 25%;
       min-width: 300px;
       grid-column: span 6;
     }
   }
-}
-
-@media screen and (min-width: 960px){
-  .account {
-    width: 80%;
-  }
-
 }
 
 @media screen and (min-width: 1200px){ 

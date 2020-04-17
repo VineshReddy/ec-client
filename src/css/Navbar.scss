@@ -1,7 +1,7 @@
 @import 'Variables';
 
 
-nav {
+.navbar {
   height:50px;
   color: $nav-color;
   & > ul {
@@ -96,20 +96,25 @@ nav {
   }
   & > ul > li {
     color: black;
+    padding: 14px;
     width:250px;
+  }
+  & > ul :hover {
+    background: slategrey;
   }
   .dropdown-content-left {
     position: absolute;
-    border: 1px solid black;
+    border: 1px solid slategrey;
     left: 100%;
     top: 0;
-    background: azure;
+    background: whitesmoke;
     visibility:hidden;
     width: 60vw;
     height: 75vh;
   }
   .dropdown-left:hover  .dropdown-content-left{
     visibility:visible;
+    background: whitesmoke;
   }
 }
 

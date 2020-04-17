@@ -1,13 +1,20 @@
 
 @import 'Variables';
+
+
 @import 'Navbar';
 @import 'Footer';
 @import 'Cart';
+
+@import 'Categories';
 @import 'Account';
 
+@import 'Product';
+@import 'Products';
 
 body {
   box-sizing: border-box;
+  font-family: 'Open Sans', 'Montserrat', arial, sans-serif;
 }
 
 body,p,a,ul,li{
@@ -56,5 +63,8 @@ a {
 
 
 
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
 

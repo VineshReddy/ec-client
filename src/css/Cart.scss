@@ -10,6 +10,7 @@
 }
 
 .cart-items {
+  margin:5px;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -22,7 +23,7 @@
     display: grid;
     justify-self:center;
     align-self:center;
-    grid-column: span 13;
+    grid-column: span 12;
     grid-template-columns: repeat(12,1fr);
     padding:1rem 0;
     border: 1px solid lightgray;
@@ -55,11 +56,11 @@
       }
     }
     .remove {
-      grid-area: 3/10/4/13;
+      grid-area: 3/10/4/12;
       justify-self: center;
     }
     .total {
-      grid-area: 1/10/3/13;
+      grid-area: 1/10/3/12;
       justify-self: center;
       align-self: center;
     }
@@ -93,6 +94,9 @@
       .button {
         width:200px;
         background-color: olive;
+      }
+      .button:hover{
+        background-color: darkkhaki;
       }
     }
 
