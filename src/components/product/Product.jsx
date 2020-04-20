@@ -2,23 +2,29 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Product = () => {
+const Product = ({product}) => {
   return (
     <section className="product-item grid">
       <div className="product-image">
-        <img src="https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg" alt="" />
+        <Link to="/">
+          <img src={product.image} alt="" />
+        </Link>
       </div>
       <div className="product-brand">
-        Aashirwad
+        <Link to="/">
+        {product.brand}
+        </Link>
       </div>
-      <div className="product-type">
-        Wheat
+      <div className="product-name">
+        <Link to="/">
+        {product.name}
+        </Link>
       </div>
       <div className="product-quantity">
-        1 * 300g
+        {product.quantity}
       </div>
       <div className="product-price">
-        $400
+        ₹{product.price}
       </div>
       <div className="addtocart">
         <i className="fas fa-cart-plus"></i>

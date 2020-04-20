@@ -43,11 +43,11 @@ const Footer = () => {
         <FooterList />
       </section>
       <section className="social-connect">
-        <i class="fab fa-facebook"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-pinterest"></i>
-        <i class="fab fa-youtube"></i>
+        <i className="fab fa-facebook"></i>
+        <i className="fab fa-twitter"></i>
+        <i className="fab fa-instagram"></i>
+        <i className="fab fa-pinterest"></i>
+        <i className="fab fa-youtube"></i>
       </section>
       <section className="copyright">
          © 2019-2020, Example.com

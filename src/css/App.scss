@@ -8,6 +8,7 @@
 
 @import 'Categories';
 @import 'Account';
+@import 'SignUp';
 
 @import 'Product';
 @import 'Products';
@@ -34,7 +35,7 @@ li{
 }
 
 a {
-  color: $nav-color;
+  color: inherit;
   outline:none;
 }
 
@@ -66,5 +67,10 @@ a {
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+}
+
+h3 {
+  color: slategrey;
+  border-bottom: 1px solid lightgray;
 }
 

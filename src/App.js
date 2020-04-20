@@ -4,12 +4,16 @@ import Main from './components/Main'
 import './css/App.scss'
 import 'normalize.css'
 
+import AuthContextProvider from './contexts/AuthContext';
+
 function App() {
   return (
   <div className="App">
-    <BrowserRouter>
-      <Main />
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
+    </AuthContextProvider>
     </div>
   );
 }
