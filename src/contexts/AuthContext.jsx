@@ -1,7 +1,7 @@
 import React, { createContext, useReducer} from 'react'
 import authReducer from './../reducers/authReducer.jsx'
 
-export const AuthContext = createContext();
+export const Auth = createContext();
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -10,14 +10,14 @@ const initialState = {
   user: null
 };
 
-const AuthContextProvider = (props) => {
+const AuthProvider = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
   
   return (
-    <AuthContext.Provider value={{state, dispatch}}>
+    <Auth.Provider value={{state, dispatch}}>
       {props.children}
-    </AuthContext.Provider>
+    </Auth.Provider>
   )
 }
 
-export default AuthContextProvider
+export default AuthProvider

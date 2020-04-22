@@ -1,24 +1,18 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect, useRouteMatch, useParams } from 'react-router-dom'
-import Header from './header';
-import Footer from './footer';
-import Cart from './user/Cart'
-import Categories from './menu/Categories'
-import Products from './product/Products'
-import Account from './user/Account.jsx'
-import SignUp from './user/SignUp.jsx'
-import SignIn from './user/SignIn.jsx'
+import Header from './components/header';
+import Footer from './components/footer';
+import Cart from './components/user/Cart'
+import Categories from './components/menu/Categories'
+import Products from './components/product/Products'
+import Account from './components/user/Account.jsx'
+import SignUp from './components/user/SignUp.jsx'
+import SignIn from './components/user/SignIn.jsx'
+import NoPageFound from './components/NoPageFound.jsx'
 
-import AuthContextProvider from './../contexts/AuthContext';
-import { AuthContext } from '../contexts/AuthContext.jsx';
 
 class Main extends Component {
-  static contextType = AuthContext
-  componentDidMount(){
-    console.log(this.context)
-  }
   render() {
-    console.log(this.context)
     return (
       <>
         <Header />
@@ -26,10 +20,17 @@ class Main extends Component {
           <Route path='/Category/SubCategory/' component={Categories}  /> 
           <Route path='/products' component={Products}  /> 
           <Route path='/menu/categories' component={Categories}  /> 
+          <Route exact path='/user'> 
+            <Redirect to='/user/signup'/>
+          </Route>
           <Route path='/user/cart' component={Cart}  /> 
           <Route path='/user/signup' component={SignUp}  /> 
           <Route path='/user/signin' component={SignIn}  /> 
-          <Route exact path='/user' component={Account}  /> 
+
+          <Route path="*">
+            <NoPageFound />
+          </Route>
+
         </Switch>
         <Footer />
       </>

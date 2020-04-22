@@ -1,7 +1,23 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import {cart} from './../../stub/dynamic';
+//import {cart} from './../../stub/dynamic';
+
+const cart = []  
+
+const Cart = () => {
+  return (
+    <main class="cart">
+      <h3>Shopping Cart</h3>
+      {
+        cart.length  ? 
+          <RenderCartItems />
+          :
+          <NoCartItems />
+      }
+    </main>
+  )
+} 
 
 const RenderCartItems = () => {
 
@@ -52,26 +68,15 @@ const RenderCartItems = () => {
   )
 }
 
+
 const NoCartItems = () => {
   return (
-    <section>
+    <section className="rem13">
       Oops! No items in your cart!!
     </section>
   )
 }
 
-const Cart = () => {
-  return (
-    <main class="cart">
-      <h3>Shopping Cart</h3>
-      {
-        cart.length  ? 
-          <RenderCartItems />
-          :
-          <NoCartItems />
-      }
-    </main>
-  )
-} 
+
 
 export default Cart

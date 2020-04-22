@@ -1,19 +1,25 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import Main from './components/Main'
 import './css/App.scss'
 import 'normalize.css'
 
-import AuthContextProvider from './contexts/AuthContext';
+const AuthenticatedApp = React.lazy(() =>
+  import('./AuthenticatedApp'),
+)
+const UnAuthenticatedApp = React.lazy(() => 
+  import('./UnAuthenticatedApp')
+)
+
 
 function App() {
+  const user = true 
   return (
   <div className="App">
-    <AuthContextProvider>
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
-    </AuthContextProvider>
+    <BrowserRouter>
+      <React.Suspense fallback={"loading..."}>
+        { user ? <AuthenticatedApp /> : <UnAuthenticatedApp /> }
+      </React.Suspense>
+    </BrowserRouter>
     </div>
   );
 }

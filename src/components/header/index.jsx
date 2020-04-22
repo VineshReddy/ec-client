@@ -60,7 +60,7 @@ const Navbar = () => {
 
         <li className="button">
           <Link to="/user">
-            <i className="fas fa-user-alt"></i>
+            <i className="fas fa-user-alt success"></i>
             <sub>Account</sub>
           </Link>
         </li>
