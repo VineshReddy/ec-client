@@ -12,3 +12,11 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+
+export const GET_ITEM_CART = 'GET_ITEM_CART';
+export const ADD_ITEM_CART = 'ADD_ITEM_CART';
+export const DELETE_ITEM_CART = 'DELETE_ITEM_CART';
+export const CART_LOADING = 'CART_LOADING';
+
+

@@ -7,19 +7,24 @@ import Categories from './components/menu/Categories'
 import Products from './components/product/Products'
 import Account from './components/user/Account.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
+import CartContextProvider from './contexts/CartContext.jsx';
 
 
 class Main extends Component {
+
   render() {
     return (
       <>
+        <CartContextProvider>
         <Header />
         <Switch>
           <Route path='/Category/SubCategory/' component={Categories}  /> 
           <Route path='/products' component={Products}  /> 
           <Route path='/menu/categories' component={Categories}  /> 
           <Route exact path='/user' component={Account}  /> 
-          <Route path='/user/cart' component={Cart}  /> 
+          
+            <Route path='/user/cart' component={Cart}  /> 
+
           <Route path='/user/signup' > 
             <Redirect to='/user'/>
           </Route>
@@ -32,6 +37,7 @@ class Main extends Component {
 
         </Switch>
         <Footer />
+        </CartContextProvider>
       </>
     )
   }

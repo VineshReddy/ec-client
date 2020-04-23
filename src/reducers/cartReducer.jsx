@@ -1,56 +1,48 @@
-import {
-  USER_LOADED,
-  USER_LOADING,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT_SUCCESS,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL
-} from './../actionTypes';
+//import { GET_ITEM_CART, ADD_ITEM_CART, DELETE_ITEM_CART,  CART_LOADING } from '../actionTypes'
 
-const initialState = {
-  token: localStorage.getItem('token'),
-  isAuthenticated: null,
-  isLoading: false,
-  user: null
-};
 
-export default function(state = initialState, action) {
+export default function(state, action) {
   switch (action.type) {
-    case USER_LOADING:
+    case "FETCH_CART":
       return {
         ...state,
-        isLoading: true
-      };
-    case USER_LOADED:
+        products: {},
+        loading: true
+      }
+    case "FETCH_CART_SUCCESS":
       return {
         ...state,
-        isAuthenticated: true,
-        isLoading: false,
-        user: action.payload
-      };
-    case LOGIN_SUCCESS:
-    case REGISTER_SUCCESS:
-      localStorage.setItem('token', action.payload.token);
+        products: action.payload,
+        loading: false
+      }
+    case "ADD_CART":
       return {
         ...state,
-        ...action.payload,
-        isAuthenticated: true,
-        isLoading: false
-      };
-    case AUTH_ERROR:
-    case LOGIN_FAIL:
-    case LOGOUT_SUCCESS:
-    case REGISTER_FAIL:
-      localStorage.removeItem('token');
+        products: [action.payload, ...state.products]
+      }
+    case "DEL_CART":
       return {
         ...state,
-        token: null,
-        user: null,
-        isAuthenticated: false,
-        isLoading: false
-      };
+        products: state.products.filter(item => item.id !== action.payload)
+      }
+    case "DEC_CART":
+      return {
+        ...state,
+        products: state.products.map(item => {
+          if(item.id === action.payload) 
+            if(item.quantity !== 1) --item.quantity;
+          return item
+        })
+      }
+    case "INC_CART":
+      return {
+        ...state,
+        products: state.products.map(item => {
+          if(item.id === action.payload) 
+            if(item.quantity !== 1) ++item.quantity;
+          return item
+        })
+      }
     default:
       return state;
   }

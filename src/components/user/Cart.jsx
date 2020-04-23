@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import {CartContext} from '../../contexts/CartContext';
 
-//import {cart} from './../../stub/dynamic';
+import {getCart, delCart, incCart,  decCart} from './../../actions/cartActions.jsx';
 
-const cart = []  
 
 const Cart = () => {
+  const {cart, dispatch} = useContext(CartContext); 
+  const {products} =  cart
+  let i = 0
+ 
+  useEffect(() => {
+    if (i = 0) {
+      dispatch({ type: "FETCH_CART" });
+      getCart().then(data => {
+        dispatch({ type: "FETCH_CART_SUCCESS", payload: data });
+      });
+      i++;
+    } else {
+      dispatch({ type: "RESET" });
+    }
+  }, []);
+
   return (
-    <main class="cart">
+    <main className="cart">
       <h3>Shopping Cart</h3>
       {
-        cart.length  ? 
-          <RenderCartItems />
+        products.length  ? 
+          <RenderCartItems products={products} dispatch={dispatch}/>
           :
           <NoCartItems />
       }
@@ -19,14 +35,31 @@ const Cart = () => {
   )
 } 
 
-const RenderCartItems = () => {
+const RenderCartItems = ({products, dispatch}) => {
 
   const [count, setCount] = useState(1);
 
-  const cartItems = cart.map(item => (
+
+  const handleChange = (action, id) => {
+    switch(action){
+      case "delete":
+        delCart(dispatch,id).then(data => console.log(data))
+        break;
+      case "increase":
+        incCart(dispatch,id).then(data => console.log(data))
+        break;
+      case "decrease":
+        decCart(dispatch,id).then(data => console.log(data))
+        break;
+      default:
+        console.log(action)
+    }
+  }
+
+  const cartItems = products.map(item => (
        <section className="cart-item" key={item.id}>
         <div className="product-image">
-          <img src={item.image}  />
+          <img src={item.image} alt="product-image"  />
         </div>
         <div className="product-info">
           <div className="product-name">
@@ -35,9 +68,9 @@ const RenderCartItems = () => {
           <div className="availability">
             {
               item.availability?
-                <div class="green">In Stock</div>
+                <div className="success">In Stock</div>
               :
-                <div class="red">Out of Stock</div>
+                <div className="error">Out of Stock</div>
             }
           </div>
           <div className="product-price">
@@ -45,13 +78,13 @@ const RenderCartItems = () => {
           </div>
         </div>
         <div className="quantity">
-          <i class="fas fa-minus"></i>
+          <i className="fas fa-minus" onClick={() => handleChange("decrease", item.id) } ></i>
             <span>{item.quantity}</span>
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus" onClick={() => handleChange("increase", item.id) }></i>
         </div>
         <div className="remove">
-          <i class="fas fa-heart"></i>
-          <i class="fas fa-times"></i>
+          <i className="fas fa-heart"></i>
+          <i className="fas fa-times" onClick={() => handleChange("delete", item.id) }></i>
         </div>
         <div className="total">
           ${item.quantity * item.price}
