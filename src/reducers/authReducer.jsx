@@ -9,14 +9,7 @@ import {
   REGISTER_FAIL
 } from './../actionTypes';
 
-const initialState = {
-  token: localStorage.getItem('token'),
-  isAuthenticated: null,
-  isLoading: false,
-  user: null
-};
-
-export default function(state = initialState, action) {
+export default function(state, action) {
   switch (action.type) {
     case USER_LOADING:
       return {

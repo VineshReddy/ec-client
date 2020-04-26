@@ -7,6 +7,7 @@ const products = [
     availability: true,
     quantity: 2,
     price: 30,
+    marketprice: 40 
   }, 
   {
     id:2,
@@ -15,6 +16,7 @@ const products = [
     availability: true,
     quantity: 2,
     price: 30,
+    marketprice: 40 
   }
 ]
 
@@ -23,7 +25,7 @@ export function getCart() {
     // immulate fetch call
     setTimeout(() => {
       resolve(products);
-    }, 1000);
+    }, 500);
   });
 }
 

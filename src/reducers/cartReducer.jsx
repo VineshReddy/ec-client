@@ -30,7 +30,7 @@ export default function(state, action) {
         ...state,
         products: state.products.map(item => {
           if(item.id === action.payload) 
-            if(item.quantity !== 1) --item.quantity;
+            if(item.quantity > 1) item.quantity--;
           return item
         })
       }
@@ -39,7 +39,7 @@ export default function(state, action) {
         ...state,
         products: state.products.map(item => {
           if(item.id === action.payload) 
-            if(item.quantity !== 1) ++item.quantity;
+            if(item.quantity > 1) item.quantity++;
           return item
         })
       }

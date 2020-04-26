@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Account = () => {
@@ -8,7 +8,7 @@ const Account = () => {
       <div className="account-items">
       <Link to="/user/profile">
         <div className="account-image">
-          <i class="fas fa-id-badge" style={{color:"peru"}} ></i>
+          <i className="fas fa-id-badge" style={{color:"peru"}} ></i>
         </div>
         <div className="account-title">
           Profile 
@@ -20,7 +20,7 @@ const Account = () => {
 
       <Link to="/user/orders">
         <div className="account-image">
-          <i class="fas fa-box-open" style={{color:"goldenrod"}} ></i>
+          <i className="fas fa-box-open" style={{color:"goldenrod"}} ></i>
         </div>
         <div className="account-title">
           Orders
@@ -31,7 +31,7 @@ const Account = () => {
       </Link>
       <Link to="/user/addresses">
         <div className="account-image">
-          <i class="fas fa-map-marked" style={{color:"cornflowerblue"}} ></i>
+          <i className="fas fa-map-marked" style={{color:"cornflowerblue"}} ></i>
         </div>
         <div className="account-title">
           Manage Addresses
@@ -42,7 +42,7 @@ const Account = () => {
       </Link>
       <Link to="/user/balance">
         <div className="account-image">
-          <i class="fas fa-rupee-sign" style={{color:"olive"}} ></i>
+          <i className="fas fa-rupee-sign" style={{color:"olive"}} ></i>
         </div>
         <div className="account-title">
           Balance 

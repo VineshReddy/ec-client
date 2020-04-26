@@ -2,7 +2,7 @@
 @import 'Variables';
 
 
-@import 'Navbar';
+@import 'Header';
 @import 'Footer';
 @import 'Cart';
 
@@ -26,7 +26,7 @@ body,p,a,ul,li{
 }
 
 main {
-  min-height:50vh;
+  min-height:60vh;
 }
 
 
@@ -54,8 +54,8 @@ a {
 .button {
   border: none;
   cursor: pointer;
-  color: white;
   padding: 15px 32px;
+  color: whitesmoke;
   text-align: center;
   font-size: 1rem;
   text-decoration: none;

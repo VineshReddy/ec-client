@@ -1,7 +1,12 @@
 import React, { Component} from 'react'
 import { Link } from 'react-router-dom'
 
+import {AuthContext} from './../../contexts/AuthContext.jsx' 
+import {login} from './../../actions/AuthActions.jsx'
+
 class SignIn extends Component { 
+  static contextType = AuthContext;
+
   state = {
     email : '',
     password : '',
@@ -17,13 +22,14 @@ class SignIn extends Component {
     e.preventDefault()
 
     const { name, email, password } = this.state
-    console.log(this.state)
 
     const newUser = {
       email,
       password
     }
-    this.props.register(newUser);
+    login(newUser).then(res => 
+      this.context.dispatch({ type: "LOGIN_SUCCESS", payload: res.data})
+    );
   }
   render() {
     return(

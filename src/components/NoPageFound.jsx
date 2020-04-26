@@ -6,13 +6,16 @@ const NoPageFound = () => {
   const [redirect, setRedirect] = useState(false)
  
   useEffect(()=> {
-    setTimeout(() =>
-      setRedirect(true)
+    let mounted = true
+    setTimeout(() =>{
+        if(mounted) setRedirect(true)
+      }
       , 3000)
-  })
+    return () => mounted = false
+  }, [])
 
   return (
-    <main class="flex-center rem15">
+    <main className="flex-center rem15">
       Sorry, Page doesn't exist, Redirecting...
       {
         redirect ? <Redirect to="/" />: null

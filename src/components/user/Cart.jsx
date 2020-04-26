@@ -2,25 +2,20 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {CartContext} from '../../contexts/CartContext';
 
-import {getCart, delCart, incCart,  decCart} from './../../actions/cartActions.jsx';
+import {getCart, delCart, incCart,  decCart} from './../../actions/CartActions.jsx';
 
 
 const Cart = () => {
   const {cart, dispatch} = useContext(CartContext); 
   const {products} =  cart
-  let i = 0
- 
+
   useEffect(() => {
-    if (i = 0) {
       dispatch({ type: "FETCH_CART" });
       getCart().then(data => {
         dispatch({ type: "FETCH_CART_SUCCESS", payload: data });
       });
-      i++;
-    } else {
-      dispatch({ type: "RESET" });
-    }
-  }, []);
+  }, [])
+ 
 
   return (
     <main className="cart">
@@ -36,9 +31,6 @@ const Cart = () => {
 } 
 
 const RenderCartItems = ({products, dispatch}) => {
-
-  const [count, setCount] = useState(1);
-
 
   const handleChange = (action, id) => {
     switch(action){
@@ -74,7 +66,9 @@ const RenderCartItems = ({products, dispatch}) => {
             }
           </div>
           <div className="product-price">
-            ${item.price}
+            MP: <del>₹{item.marketprice}</del>
+            &nbsp;
+            ₹{item.price}
           </div>
         </div>
         <div className="quantity">
@@ -87,12 +81,12 @@ const RenderCartItems = ({products, dispatch}) => {
           <i className="fas fa-times" onClick={() => handleChange("delete", item.id) }></i>
         </div>
         <div className="total">
-          ${item.quantity * item.price}
+          ₹{item.quantity * item.price}
         </div>
       </section>
   ))
   return (
-    <div class="cart-items">
+    <div className="cart-items">
       {cartItems}
       <div className="checkout">
         <div className="button">Checkout</div>

@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import AuthProvider from './contexts/AuthContext';
+import AuthContextProvider from './contexts/AuthContext';
+import CartContextProvider from './contexts/CartContext.jsx';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
+    <AuthContextProvider>
+      <CartContextProvider>
       <App />
-    </AuthProvider>
+    </CartContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

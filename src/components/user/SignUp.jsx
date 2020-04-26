@@ -1,7 +1,14 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import {AuthContext} from './../../contexts/AuthContext.jsx' 
+import {register} from './../../actions/AuthActions.jsx'
+
+
 class SignUp extends Component { 
+
+  static contextType = AuthContext;
+
   state = {
     name : '',
     email : '',
@@ -25,7 +32,9 @@ class SignUp extends Component {
       email,
       password
     }
-    this.props.register(newUser);
+    register(newUser).then(res =>
+      this.context.dispatch({ type: "REGISTER_SUCCESS", payload: res.data})
+    )
   }
   render() {
     return(
