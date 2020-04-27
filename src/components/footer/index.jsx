@@ -14,13 +14,13 @@ const FooterList = () => {
       {
         item.subitems.map( subitem => (
           subitem.external ? (
-            <li>
-              <a href={subitem.url} key={subitem.label} >{subitem.label}</a>
+            <li  key={subitem.label}>
+              <a href={subitem.url} >{subitem.label}</a>
             </li>
           ):
           (
-            <li>
-              <Link to={subitem.url} key={subitem.label} >{subitem.label}</Link>
+            <li  key={subitem.label} >
+              <Link to={subitem.url}  >{subitem.label}</Link>
             </li>
           )
         ))

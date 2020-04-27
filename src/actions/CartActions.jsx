@@ -4,19 +4,21 @@ const products = [
     id:1,
     name: 'Tomato asdkfj lsajfdjsjdfdsf',
     image:'https://www.bigbasket.com/media/uploads/p/l/30010383_10-bb-popular-peanutsmungaphalishengdana-raw.jpg',
-    availability: true,
     quantity: 2,
     price: 30,
-    marketprice: 40 
+    marketprice: 40,
+    availability: true,
+    brand: 'Dtej'
   }, 
   {
     id:2,
     name: 'Potato',
     image:'',
-    availability: true,
     quantity: 2,
     price: 30,
-    marketprice: 40 
+    marketprice: 40,
+    availability: true,
+    brand: 'Dtej'
   }
 ]
 
@@ -30,24 +32,41 @@ export function getCart() {
 }
 
 
+export const addCart = (dispatch, id) =>  {
+  return new Promise(resolve => {
+    dispatch({ type: "ADD_CART", payload: id});
+   });
+}
+
+
 export const delCart = (dispatch, id) =>  {
   return new Promise(resolve => {
     dispatch({ type: "DEL_CART", payload: id});
-    // immulate fetch call
    });
 }
 
-export const incCart = (dispatch, id) =>  {
+export const incCart = (dispatch, id, products) =>  {
+  const modifiedProducts = products.map(item => {
+    if(item.id === id) 
+      item.quantity++;
+    return item
+  })
+
   return new Promise(resolve => {
-    dispatch({ type: "INC_CART", payload: id});
-    // immulate fetch call
+        dispatch({ type: "INC_CART", payload: modifiedProducts});
    });
 }
 
+export const decCart = (dispatch, id, products) =>  {
+  const modifiedProducts = products.filter(item => item.id === id && item.quantity === 1 ? false : true )
 
-export const decCart = (dispatch, id) =>  {
+    .map(item => {
+    if(item.id === id) 
+      item.quantity--;
+    return item
+  })
+
   return new Promise(resolve => {
-    dispatch({ type: "DEC_CART", payload: id});
-    // immulate fetch call
+        dispatch({ type: "DEC_CART", payload: modifiedProducts});
    });
 }

@@ -10,10 +10,12 @@ const Cart = () => {
   const {products} =  cart
 
   useEffect(() => {
-      dispatch({ type: "FETCH_CART" });
-      getCart().then(data => {
-        dispatch({ type: "FETCH_CART_SUCCESS", payload: data });
-      });
+      {/*
+        *dispatch({ type: "FETCH_CART" });
+        *getCart().then(data => {
+        *  dispatch({ type: "FETCH_CART_SUCCESS", payload: data });
+        *});
+        */}
   }, [])
  
 
@@ -38,10 +40,10 @@ const RenderCartItems = ({products, dispatch}) => {
         delCart(dispatch,id).then(data => console.log(data))
         break;
       case "increase":
-        incCart(dispatch,id).then(data => console.log(data))
+        incCart(dispatch,id,products).then(data => console.log(data))
         break;
       case "decrease":
-        decCart(dispatch,id).then(data => console.log(data))
+        decCart(dispatch,id,products).then(data => console.log(data))
         break;
       default:
         console.log(action)
@@ -66,7 +68,7 @@ const RenderCartItems = ({products, dispatch}) => {
             }
           </div>
           <div className="product-price">
-            MP: <del>₹{item.marketprice}</del>
+            MP: <span className="strikethrough">₹{item.marketprice}</span>
             &nbsp;
             ₹{item.price}
           </div>

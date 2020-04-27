@@ -28,20 +28,12 @@ export default function(state, action) {
     case "DEC_CART":
       return {
         ...state,
-        products: state.products.map(item => {
-          if(item.id === action.payload) 
-            if(item.quantity > 1) item.quantity--;
-          return item
-        })
+        products: action.payload
       }
     case "INC_CART":
       return {
         ...state,
-        products: state.products.map(item => {
-          if(item.id === action.payload) 
-            if(item.quantity > 1) item.quantity++;
-          return item
-        })
+        products: action.payload 
       }
     default:
       return state;

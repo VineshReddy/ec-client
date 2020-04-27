@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Product = ({product}) => {
+const Product = ({product, handleChange}) => {
+
   return (
     <section className="product-item grid">
       <div className="product-image">
@@ -21,13 +22,18 @@ const Product = ({product}) => {
         </Link>
       </div>
       <div className="product-quantity">
-        {product.quantity}
+        {product.productquantity}
       </div>
       <div className="product-price">
+        MP: <span className="strikethrough">₹{product.marketprice} </span>
+
         ₹{product.price}
       </div>
-      <div className="addtocart">
-        <i className="fas fa-cart-plus"></i>
+      <div className="addtocart" onClick={() => handleChange("add", product.id) } >
+        <div className="flex-center">
+          Add
+          <i className="fas fa-shopping-cart" ></i>
+        </div>
       </div>
     </section>
   )

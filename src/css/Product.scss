@@ -18,7 +18,8 @@
   }
   .product-brand {
     grid-area: 2/5/3/13;
-    font: 300 0.8rem 'Open Sans'; 
+    font: 700 0.8rem 'Open Sans'; 
+    color: dimgray;
     letter-spacing: 1px;
   }
 
@@ -28,7 +29,7 @@
     font: 300 0.8rem Open Sans; 
   }
   .product-price {
-    grid-area: 5/5/6/7;
+    grid-area: 5/5/6/9;
     align-self: center;
     font: 400 1.1rem Open Sans; 
   }
@@ -37,13 +38,21 @@
     margin-top:10px;
     justify-self: end;
     align-self: center;
-    i{
-      font-size: 2rem;
-      color: coral;
-      cursor: pointer;
+    div {
+      color: whitesmoke;
+      background-color:darkseagreen;
+      border-radius: 5px;
+      padding:5px;
+      font: 700 .9rem 'Open Sans'; 
+      
     }
-    i:hover{
-      color: lightcoral;
+    i{
+      font-size: 1rem;
+      margin-left: 4px;
+    }
+    div:hover{
+      background-color: olivedrab;
+      cursor: pointer;
     }
   }
 }
