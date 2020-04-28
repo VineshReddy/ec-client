@@ -13,6 +13,7 @@ class SignUp extends Component {
     name : '',
     email : '',
     password : '',
+    mobile: '',
     msg: null
   }
   handleChange = (e) => {
@@ -24,13 +25,14 @@ class SignUp extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { name, email, password } = this.state
+    const { name, email, password, mobile } = this.state
     console.log(this.state)
 
     const newUser = {
       name,
       email,
-      password
+      password,
+      mobile
     }
     register(newUser).then(res =>
       this.context.dispatch({ type: "REGISTER_SUCCESS", payload: res.data})

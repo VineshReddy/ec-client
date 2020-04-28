@@ -25,8 +25,8 @@ const Product = ({product, handleChange}) => {
         {product.productquantity}
       </div>
       <div className="product-price">
-        MP: <span className="strikethrough">₹{product.marketprice} </span>
-
+       <span className="strikethrough">₹{product.marketprice}</span>
+        &nbsp;
         ₹{product.price}
       </div>
       <div className="addtocart" onClick={() => handleChange("add", product.id) } >

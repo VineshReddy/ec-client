@@ -13,7 +13,7 @@ export const getUser = (token) => {
   });
 }
 
-export const register = ({ name, email, password }) => {
+export const register = ({ name, email, password, mobile }) => {
   // Headers
   const config = {
     headers: {
@@ -22,7 +22,7 @@ export const register = ({ name, email, password }) => {
   };
 
   // Request body
-  const body = JSON.stringify({ name, email, password });
+  const body = JSON.stringify({ name, email, password, mobile });
 
   return new Promise(resolve => {
     axios
