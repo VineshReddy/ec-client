@@ -1,0 +1,27 @@
+
+
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  background: #bfbfbf;
+  height: 100%;
+  z-index: 1;
+}
+
+.sidenav-header {
+  height:50px;
+  background-color: lightgreen;
+  .sidenav-heading{
+    height: 100%;
+    width: 90%;
+    font: 600 1.2rem 'Open Sans'; 
+  }
+  .sidenav-close{
+    display: inline;
+    position: absolute;
+    top:10px;
+    right:20px;
+  }
+}
