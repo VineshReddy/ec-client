@@ -1,0 +1,88 @@
+
+.orders{
+  img{
+    width:4rem;
+  }
+}
+
+.order-items {
+  .order-item {
+
+    width:100%;
+    max-width: 800px;
+    margin: 20px auto 10px auto;
+  }
+}
+
+.order-header {
+  padding: 0 5px;
+  border: 1px solid gainsboro;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke; 
+  & > * {
+    display: flex;
+    flex-direction: column;
+    div:first-child{
+      font: 700 0.8rem 'Open Sans'; 
+    }
+  }  
+  .order-date {
+    grid-column: span 3;
+    justify-self: center;
+  }
+  .order-address {
+    grid-column: span 5;
+  }
+  .order-total {
+    grid-column: 9/10;
+  }
+  .order-status {
+    grid-column: 10/13;
+    justify-self: end;
+  }
+}
+
+.order-product {
+  padding: 0 5px;
+  min-height: 4.5rem;
+  border: 1px solid gainsboro;
+  background: whitesmoke; 
+  justify-content: center;
+  align-items: center;
+  grid-column: span 13;
+  .product-image{
+    grid-column: span 3;
+    justify-self: center;
+  }
+  .product-info{
+    grid-column: span 5;
+    .product-name{
+      font: 600 1rem 'Open Sans'; 
+    }
+    .product-quantity, .product-price {
+      font: 400 italic 0.9rem 'Montserrat'; 
+    }
+  }
+  .product-status {
+    grid-column: 9/13;
+    justify-self: end;
+  }
+}
+
+
+@media screen and (min-width: 620px){
+
+}
+
+@media screen and (min-width: 960px){
+  .orders{
+    width:80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px){ 
+
+}

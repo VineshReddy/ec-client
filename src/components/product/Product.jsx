@@ -3,33 +3,34 @@ import { Link } from 'react-router-dom'
 
 
 const Product = ({product, handleChange}) => {
-
+  const { id, name, image, productquantity, price, marketprice, availablequantity, brand, category  } = product 
   return (
     <section className="product-item grid">
       <div className="product-image">
         <Link to="/">
-          <img src={product.image} alt="" />
+          <img src={image} alt="" />
         </Link>
       </div>
       <div className="product-brand">
         <Link to="/">
-        {product.brand}
+        {brand}
         </Link>
       </div>
       <div className="product-name">
         <Link to="/">
-        {product.name}
+        {name}
         </Link>
       </div>
       <div className="product-quantity">
-        {product.productquantity}
+        {productquantity}
       </div>
       <div className="product-price">
-       <span className="strikethrough">₹{product.marketprice}</span>
-        &nbsp;
-        ₹{product.price}
+        ₹{price}
+        {
+          price === marketprice? null: <span className="strikethrough mrp">₹{marketprice}</span>
+        }
       </div>
-      <div className="addtocart" onClick={() => handleChange("add", product.id) } >
+      <div className="addtocart" onClick={() => handleChange("add", id) } >
         <div className="flex-center">
           Add
           <i className="fas fa-shopping-cart" ></i>

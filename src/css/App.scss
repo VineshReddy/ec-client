@@ -5,6 +5,7 @@
 @import 'Header';
 @import 'Footer';
 @import 'Cart';
+@import 'Orders';
 
 @import 'Categories';
 @import 'Account';
@@ -93,3 +94,12 @@ h3 {
   -o-transform:rotate(-5deg);
   transform:rotate(-5deg);
 }
+
+
+
+.mrp {
+  color: grey;
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+

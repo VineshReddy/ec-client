@@ -1,10 +1,11 @@
-import React, { Component, useContext } from 'react'
+import React, { Component, useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Product from './Product';
 
 import {CartContext} from '../../contexts/CartContext';
 import {addCart, delCart, incCart,  decCart} from './../../actions/CartActions.jsx';
+import {getProducts} from './../../actions/ProductActions.jsx';
 
 
 const listProducts = [ 
@@ -42,12 +43,19 @@ const listProducts = [
 
 const ProductsList = () => {
   const {cart, dispatch} = useContext(CartContext); 
+  const [productsList, setProductsList] = useState([]); 
+
+  useEffect(() => {
+    let mounted = true
+    getProducts().then(res => setProductsList(res.data))
+    return () => mounted = false
+  }, [])
 
   const handleChange = (action, id) => {
     const {products} =  cart
     switch(action){
       case "add":
-        const item = listProducts.find(item => item.id == id)
+        const item = productsList.find(item => item.id == id)
         item.quantity = 1
         addCart(dispatch,item).then(data => console.log(data))
         break;
@@ -65,7 +73,7 @@ const ProductsList = () => {
     }
   }
 
-  const productlist = listProducts.map(item => {
+  const productlist = productsList.map(item => {
     return (
       <li key={item.id}>
         <Product product={item} handleChange={handleChange} /> 
