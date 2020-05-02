@@ -7,6 +7,7 @@ import Products from './components/product/Products'
 import Account from './components/user/Account.jsx'
 import Cart from './components/user/Cart'
 import Orders from './components/user/Orders.jsx'
+import Addresses from './components/user/Addresses.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
 
 
@@ -22,6 +23,7 @@ const Main = () => {
         
         <Route path='/user/cart' component={Cart}  /> 
         <Route path='/user/orders' component={Orders}  /> 
+        <Route path='/user/addresses' component={Addresses}  /> 
 
         <Route path='/user/signup' > 
           <Redirect to='/user'/>

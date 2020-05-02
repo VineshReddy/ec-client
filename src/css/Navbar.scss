@@ -5,14 +5,17 @@
   top: 0;
   left: 0;
   width: 300px;
-  background: #bfbfbf;
+  background: #2b2e3c;
   height: 100%;
   z-index: 1;
+  overflow-x:scroll;
+  display: none;
 }
 
 .sidenav-header {
   height:50px;
-  background-color: lightgreen;
+  background-color: mediumturquoise;
+  color: ghostwhite;
   .sidenav-heading{
     height: 100%;
     width: 90%;
@@ -25,3 +28,17 @@
     right:20px;
   }
 }
+
+.sidenav-body-category, .sidenav-body-subcategory {
+  display:block;
+  .sidenav-item {
+  }
+  .button {
+    display: block;
+    text-align: start;
+  }
+  .button:hover {
+    background: steelblue;
+  }
+}
+
