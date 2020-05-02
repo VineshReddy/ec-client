@@ -55,8 +55,6 @@ export const login = ({ email, password }) => {
 
 
 export const tokenConfig = token => {
-  // Get token from localstorage
-  // Headers
   const config = {
     headers: {
       'Content-type': 'application/json'

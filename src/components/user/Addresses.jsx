@@ -15,6 +15,9 @@ const Addresses = () => {
   return (
     <main className="addresses">
       <h3>Addresses</h3>
+      <div className="addresses-options">
+        <div className="button but-col">Create Address</div>
+      </div>
       {
         addresses.length  ? 
           <RenderAddresses addresses={addresses} />

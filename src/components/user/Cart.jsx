@@ -100,7 +100,7 @@ const RenderCartItems = ({products, dispatch}) => {
     <div className="cart-items">
       {cartItems}
       <div className="checkout">
-        <div className="button">Checkout</div>
+        <div className="button but-col">Checkout</div>
       </div>
     </div>
   )
