@@ -1,7 +1,8 @@
 import axios from 'axios';
-
+import {tokenConfig} from './../utilities/tokenconfig.jsx'
 
 export const getUser = (token) => {
+  //const token = localStorage.getItem('token')
   return new Promise(resolve => {
     setTimeout(() => {
     axios
@@ -53,19 +54,4 @@ export const login = ({ email, password }) => {
 }
 
 
-
-export const tokenConfig = token => {
-  const config = {
-    headers: {
-      'Content-type': 'application/json'
-    }
-  };
-
-  // If token, add to headers
-  if (token) {
-    config.headers['x-auth-token'] = token;
-  }
-
-  return config;
-};
 

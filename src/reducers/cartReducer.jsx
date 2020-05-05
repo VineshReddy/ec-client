@@ -35,6 +35,12 @@ export default function(state, action) {
         ...state,
         products: action.payload 
       }
+    case "CLEAR_CART":
+      return {
+        ...state,
+        products: [] 
+      }
+
     default:
       return state;
   }

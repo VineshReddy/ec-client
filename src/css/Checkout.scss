@@ -1,0 +1,49 @@
+
+
+.checkout-items {
+  max-width: 800px;
+  //margin: 20px auto 10px auto;
+  //border: 1px solid gainsboro;
+  //padding:10px;
+  
+  & > * {
+    padding: 10px 0;
+  }
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+  .content {
+    padding: 0 1rem;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+}
+
+
+@media screen and (min-width: 620px){
+
+}
+
+@media screen and (min-width: 960px){
+  .checkout-item{
+    width:80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px){ 
+
+}

@@ -15,7 +15,7 @@
     color: black;
     margin: 10px;
     width: 80%;
-    height: 60px;
+    height: 100px;
     grid-column: span 12;
     justify-self:center;
     align-self: center;
@@ -54,9 +54,11 @@
     margin: 0 auto;
     width: 80%;
     a {
-      max-width: 25%;
       min-width: 300px;
       grid-column: span 6;
+    }
+    .account-description {
+      line-height: 1.4
     }
   }
 }

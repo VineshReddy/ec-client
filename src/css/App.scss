@@ -8,6 +8,7 @@
 @import 'Cart';
 @import 'Orders';
 @import 'Addresses';
+@import 'Checkout';
 
 @import 'Categories';
 @import 'Account';
@@ -16,7 +17,7 @@
 @import 'Product';
 @import 'Products';
 
-body {
+* {
   box-sizing: border-box;
   font-family: 'Open Sans', 'Montserrat', arial, sans-serif;
 }

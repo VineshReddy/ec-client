@@ -33,7 +33,7 @@
       margin-top: 10px;
       font: 500 1rem 'Montserrat';
     }
-    input {
+    input:not(.but-col) {
       grid-column: span 12;
       line-height: 2.5;
       padding-left:5px;
@@ -41,7 +41,7 @@
     
     
     .button {
-      background-color: olive;
+      grid-column: span 12;
       line-height: normal;
       margin-top: 10px;
     }

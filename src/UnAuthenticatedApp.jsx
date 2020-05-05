@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' 
 import { Switch, Route, Redirect, useRouteMatch, useParams } from 'react-router-dom'
 import Header from './components/header';
 import Footer from './components/footer';
 import Cart from './components/user/Cart'
-import Categories from './components/menu/Categories'
 import Products from './components/product/Products'
-import Account from './components/user/Account.jsx'
 import SignUp from './components/user/SignUp.jsx'
 import SignIn from './components/user/SignIn.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
@@ -17,13 +15,11 @@ class Main extends Component {
       <>
         <Header />
         <Switch>
-          <Route path='/Category/SubCategory/' component={Categories}  /> 
           <Route path='/products' component={Products}  /> 
-          <Route path='/menu/categories' component={Categories}  /> 
           <Route exact path='/user'> 
             <Redirect to='/user/signup'/>
           </Route>
-          <Route path='/user/cart' component={Cart}  /> 
+          <Route exact path='/user/cart' component={Cart}  /> 
           <Route path='/user/signup' component={SignUp}  /> 
           <Route path='/user/signin' component={SignIn}  /> 
 

@@ -87,7 +87,8 @@ const RenderProducts = ({products}) => {
             </Link>
           </div>
           <div className="product-quantity">Quantity : {quantity}</div>
-          <div className="product-price">Price : ₹{price}</div>
+          <div className="product-price">Unit Price : ₹{price}</div>
+          <div className="product-price">Price : ₹{price * quantity}</div>
         </div>
         {
           product.deliverystatus?

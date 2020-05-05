@@ -70,3 +70,11 @@ export const decCart = (dispatch, id, products) =>  {
         dispatch({ type: "DEC_CART", payload: modifiedProducts});
    });
 }
+
+
+export const clearCart = (dispatch) =>  {
+  return new Promise(resolve => {
+    dispatch({ type: "CLEAR_CART"});
+   });
+}
+

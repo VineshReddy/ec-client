@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import {AuthContext} from './../../contexts/AuthContext.jsx' 
 import {login} from './../../actions/AuthActions.jsx'
@@ -27,9 +27,10 @@ class SignIn extends Component {
       email,
       password
     }
-    login(newUser).then(res => 
+    login(newUser).then(res => {
       this.context.dispatch({ type: "LOGIN_SUCCESS", payload: res.data})
-    );
+      this.props.history.goBack()
+    });
   }
   render() {
     return(
@@ -41,7 +42,7 @@ class SignIn extends Component {
             <input type="email" name="email" placeholder="example@email.com" onChange={this.handleChange}  required />
             <label htmlFor="password">Password : </label>
             <input type="password" name="password" placeholder="password" onChange={this.handleChange}  required />
-            <input type="submit" value="Login" className="button" />
+            <input type="submit" value="Login" className="button but-col" />
           </form>
           <div className="existinguser">
             New User? <Link to="/user/signup">Sign up</Link>
@@ -55,4 +56,4 @@ class SignIn extends Component {
 
 }
 
-export default SignIn 
+export default withRouter(SignIn)

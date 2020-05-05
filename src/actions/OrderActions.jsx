@@ -20,4 +20,18 @@ export const getOrders = () => {
     }, 500);
   });
 }
+
+
+export const placeOrder = (products, addressid) => {
+  const body = { userid : "5ea70642f27b6bf056eeebe8", products, addressid };
+  return new Promise(resolve => {
+    setTimeout(() => {
+    axios
+      .post('/api/order/placeorder', body, config )
+      .then(res => 
+        resolve(res)
+      )
+    }, 500);
+  });
+}
  
