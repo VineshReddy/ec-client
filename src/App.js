@@ -28,11 +28,15 @@ function App() {
     return () => mounted = false
   }, [])
 
+  const { isAuthenticated, isLoading } = auth
   return (
   <div className="App">
     <BrowserRouter>
       <React.Suspense fallback={ <Loading /> }>
-        { auth.isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp /> }
+        { 
+          isLoading ? <Loading /> :
+          isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />
+        }
       </React.Suspense>
     </BrowserRouter>
     </div>
