@@ -1,14 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {getAddresses} from './../../actions/AddressActions.jsx';
+import Loading from './../Loading.jsx'
 
 
 const Addresses = () => {
   const [addresses, setAddresses] = useState([]); 
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     let mounted = true
-    getAddresses().then(res => setAddresses(res.data))
+    if(loading) getAddresses().then(res => {
+      setAddresses(res.data)
+      setLoading(false)
+    })
     return () => mounted = false
   }, [])
  
@@ -16,10 +21,12 @@ const Addresses = () => {
     <main className="addresses">
       <h3>Addresses</h3>
       <div className="addresses-options">
-        <div className="button but-col">Create Address</div>
+        {
+          loading ? null : <div className="button but-col">Create Address</div>
+        }
       </div>
       {
-        addresses.length  ? 
+        loading ? <Loading /> : addresses.length  ? 
           <RenderAddresses addresses={addresses} />
           :
           <NoAddress/>

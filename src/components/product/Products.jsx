@@ -1,5 +1,6 @@
-import React, { Component, useState, useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import Loading from './../Loading.jsx'
 
 import Product from './Product';
 
@@ -7,55 +8,15 @@ import {CartContext} from '../../contexts/CartContext';
 import {addCart, delCart, incCart,  decCart} from './../../actions/CartActions.jsx';
 import {getProducts} from './../../actions/ProductActions.jsx';
 
-
-const listProducts = [ 
-  {
-    id: 1,
-    name: 'Apple',
-    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
-    productquantity: '1 * 400g',
-    price: 40,
-    marketprice: 40,
-    availability: true,
-    brand: 'Dtej'
-  }, 
-  {
-    id: 2,
-    name: 'Apple',
-    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
-    productquantity: '1 * 400g',
-    price: 40,
-    marketprice: 40,
-    availability: true,
-    brand: 'Dtej'
-  }, 
-  {
-    id: 3,
-    name: 'Apple',
-    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
-    productquantity: '1 * 400g',
-    price: 40,
-    marketprice: 40,
-    availability: true,
-    brand: 'Dtej'
-  }, 
-]
-
-const ProductsList = () => {
+const ProductsList = ({productsList, setProductsList}) => {
   const {cart, dispatch} = useContext(CartContext); 
-  const [productsList, setProductsList] = useState([]); 
 
-  useEffect(() => {
-    let mounted = true
-    getProducts().then(res => setProductsList(res.data))
-    return () => mounted = false
-  }, [])
-
-  const handleChange = (action, id) => {
+    const handleChange = (action, id) => {
     const {products} =  cart
+
     switch(action){
       case "add":
-        const item = productsList.find(item => item.id == id)
+        const item = productsList.find(item => item.id === id)
         item.quantity = 1
         addCart(dispatch,item).then(data => console.log(data))
         break;
@@ -74,6 +35,11 @@ const ProductsList = () => {
   }
 
   const productlist = productsList.map(item => {
+    /* change _id to id */ 
+    if(!item.id){
+      item.id = item._id
+      delete item._id
+    }
     return (
       <li key={item.id}>
         <Product product={item} handleChange={handleChange} /> 
@@ -88,14 +54,70 @@ const ProductsList = () => {
 }
 
 const Products = () => {
+  const { categoryName } = useParams()
+  const [productsList, setProductsList] = useState(null); 
+
+  useEffect(() => {
+    let mounted = true
+    getProducts(categoryName).then(res => {
+      if(mounted){
+        setProductsList(res.data)
+      }
+    })
+    return () => mounted = false
+  }, [])
+
 
   return (
     <main className="products">
       <h3>Products</h3>
-      <ProductsList />
+      { 
+        !productsList ? <Loading /> : 
+          !productsList.length ? <div> No Products found </div> :
+          <ProductsList productsList={productsList} setProductsList={setProductsList}/>
+      }
     </main>
   )
 }
 
 export default Products 
+
+
+{/*
+  *
+  *const listProducts = [ 
+  *  {
+  *    id: 1,
+  *    name: 'Apple',
+  *    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
+  *    productquantity: '1 * 400g',
+  *    price: 40,
+  *    marketprice: 40,
+  *    availability: true,
+  *    brand: 'Dtej'
+  *  }, 
+  *  {
+  *    id: 2,
+  *    name: 'Apple',
+  *    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
+  *    productquantity: '1 * 400g',
+  *    price: 40,
+  *    marketprice: 40,
+  *    availability: true,
+  *    brand: 'Dtej'
+  *  }, 
+  *  {
+  *    id: 3,
+  *    name: 'Apple',
+  *    image: 'https://www.bigbasket.com/media/uploads/p/l/40044731_11-bb-popular-moong-dal.jpg',
+  *    productquantity: '1 * 400g',
+  *    price: 40,
+  *    marketprice: 40,
+  *    availability: true,
+  *    brand: 'Dtej'
+  *  }, 
+  *]
+  *
+  */}
+
 

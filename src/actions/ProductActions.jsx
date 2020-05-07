@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 
-export const getProducts = () => {
+export const getProducts = (categoryName) => {
   return new Promise(resolve => {
     setTimeout(() => {
+    const body = {categoryName} 
     axios
-      .get('/api/product/' )
+      .post('/api/product/', body )
       .then(res => 
         resolve(res)
       )

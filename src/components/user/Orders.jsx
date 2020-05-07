@@ -1,14 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {getOrders} from './../../actions/OrderActions.jsx';
+import Loading from './../Loading.jsx'
 
 
 const Orders = () => {
   const [orders, setOrders] = useState([]); 
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     let mounted = true
-    getOrders().then(res => setOrders(res.data))
+    getOrders().then(res => {
+      if(mounted){
+        setOrders(res.data)
+        setLoading(false)
+      }
+    })
     return () => mounted = false
   }, [])
  
@@ -17,7 +24,7 @@ const Orders = () => {
     <main className="orders">
       <h3>Orders</h3>
       {
-        orders.length  ? 
+        loading ? <Loading /> : orders.length ?
           <RenderOrders orders={orders} />
           :
           <NoOrders />
@@ -72,17 +79,17 @@ const RenderOrders = ({orders}) => {
 
 const RenderProducts = ({products}) => {
   const productItems = products.map(product => {
-    const { id, image, name,  quantity, price } = product
+    const { _id, id, image, name,  quantity, price } = product
     return (
       <section className="order-product grid" key={product._id}>
         <div className="product-image">
-          <Link to={'/product/' + product.id} >
+          <Link to={'/product/' + id} >
             <img src={image} alt={name + " img"}  />
           </Link>
         </div>
         <div className="product-info">
           <div className="product-name">
-            <Link to={'/product/' + product.id} >
+            <Link to={'/product/' + id} >
               {name} 
             </Link>
           </div>

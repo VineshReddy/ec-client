@@ -17,7 +17,7 @@ const Main = () => {
     <>
       <Header />
       <Switch>
-        <Route path='/products' component={Products}  /> 
+        <Route exact path='/category/:categoryName' component={Products}  /> 
         <Route exact path='/user' component={Account}  /> 
         
         <Route exact path='/user/cart' component={Cart}  /> 

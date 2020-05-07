@@ -10,12 +10,6 @@ const Cart = () => {
   const {products} =  cart
 
   useEffect(() => {
-      {/*
-        *dispatch({ type: "FETCH_CART" });
-        *getCart().then(data => {
-        *  dispatch({ type: "FETCH_CART_SUCCESS", payload: data });
-        *});
-        */}
   }, [])
  
 

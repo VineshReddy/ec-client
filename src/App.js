@@ -4,6 +4,7 @@ import './css/App.scss'
 import 'normalize.css'
 import {AuthContext} from './contexts/AuthContext.jsx' 
 import { getUser } from './actions/AuthActions.jsx'
+import Loading from './components/Loading.jsx'
 
 const AuthenticatedApp = React.lazy(() =>
   import('./AuthenticatedApp'),
@@ -30,7 +31,7 @@ function App() {
   return (
   <div className="App">
     <BrowserRouter>
-      <React.Suspense fallback={"loading..."}>
+      <React.Suspense fallback={ <Loading /> }>
         { auth.isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp /> }
       </React.Suspense>
     </BrowserRouter>

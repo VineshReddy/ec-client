@@ -1,37 +1,4 @@
 
-const products = [
-  {
-    id:1,
-    name: 'Tomato asdkfj lsajfdjsjdfdsf',
-    image:'https://www.bigbasket.com/media/uploads/p/l/30010383_10-bb-popular-peanutsmungaphalishengdana-raw.jpg',
-    quantity: 2,
-    price: 30,
-    marketprice: 40,
-    availability: true,
-    brand: 'Dtej'
-  }, 
-  {
-    id:2,
-    name: 'Potato',
-    image:'',
-    quantity: 2,
-    price: 30,
-    marketprice: 40,
-    availability: true,
-    brand: 'Dtej'
-  }
-]
-
-export function getCart() {
-  return new Promise(resolve => {
-    // immulate fetch call
-    setTimeout(() => {
-      resolve(products);
-    }, 500);
-  });
-}
-
-
 export const addCart = (dispatch, id) =>  {
   return new Promise(resolve => {
     dispatch({ type: "ADD_CART", payload: id});

@@ -15,13 +15,15 @@ class Main extends Component {
       <>
         <Header />
         <Switch>
-          <Route path='/products' component={Products}  /> 
-          <Route exact path='/user'> 
-            <Redirect to='/user/signup'/>
-          </Route>
+          <Route exact path='/category/:categoryName' component={Products}  /> 
           <Route exact path='/user/cart' component={Cart}  /> 
           <Route path='/user/signup' component={SignUp}  /> 
           <Route path='/user/signin' component={SignIn}  /> 
+
+          <Route exact path='/user' component={NotAuth}  /> 
+          <Route exact path='/user/orders' component={NotAuth}  /> 
+          <Route exact path='/user/addresses' component={NotAuth}  /> 
+          <Route exact  path='/user/cart/checkout' component={NotAuth}  /> 
 
           <Route path="*">
             <NoPageFound />
@@ -33,6 +35,14 @@ class Main extends Component {
     )
   }
 }
+
+
+const NotAuth = () => {
+  return (
+    <Redirect to="/user/signin" />
+  )
+}
+
 
 export default Main
 
