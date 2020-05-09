@@ -7,8 +7,10 @@ import Account from './components/user/Account.jsx'
 import Cart from './components/user/Cart'
 import Orders from './components/user/Orders.jsx'
 import Addresses from './components/user/Addresses.jsx'
+import CreateAddress from './components/user/CreateAddress.jsx'
 import Checkout from './components/user/checkout/Checkout.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
+import Loading from './components/Loading.jsx'
 
 
 
@@ -23,6 +25,7 @@ const Main = () => {
         <Route exact path='/user/cart' component={Cart}  /> 
         <Route path='/user/orders' component={Orders}  /> 
         <Route path='/user/addresses' component={Addresses}  /> 
+        <Route path='/user/address/createaddress' component={CreateAddress}  /> 
         
         <Route path='/user/cart/checkout' component={Checkout}  /> 
 
@@ -35,6 +38,7 @@ const Main = () => {
         <Route path="*">
           <NoPageFound />
         </Route>
+        <Route exact path='/test' component={Loading}  /> 
 
       </Switch>
       <Footer />

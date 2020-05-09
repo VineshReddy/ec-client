@@ -1,12 +1,17 @@
 import axios from 'axios';
 import {tokenConfig} from './../utilities/tokenconfig.jsx'
 
-export const getUser = (token) => {
-  //const token = localStorage.getItem('token')
+const config = {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+export const getUser = () => {
   return new Promise(resolve => {
     setTimeout(() => {
     axios
-      .get('/api/auth/user', tokenConfig(token) )
+      .get('/api/auth/user', tokenConfig() )
       .then(res => 
         resolve(res)
       )
@@ -15,14 +20,6 @@ export const getUser = (token) => {
 }
 
 export const register = ({ name, email, password, mobile }) => {
-  // Headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
-
-  // Request body
   const body = JSON.stringify({ name, email, password, mobile });
 
   return new Promise(resolve => {
@@ -34,14 +31,7 @@ export const register = ({ name, email, password, mobile }) => {
   })
 };
 
-// Login User
 export const login = ({ email, password }) => {
-  // Headers
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
   const body = JSON.stringify({ email, password });
 
   return new Promise(resolve => {

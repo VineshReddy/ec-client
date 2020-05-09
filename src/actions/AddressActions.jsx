@@ -1,19 +1,25 @@
 import axios from 'axios';
+import {tokenConfig} from './../utilities/tokenconfig.jsx'
 
-
-
-const config = {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
 
 export const getAddresses = () => {
-  const body = { userid : "5ea70642f27b6bf056eeebe8" };
   return new Promise(resolve => {
     setTimeout(() => {
     axios
-      .get('/api/address/', body, config )
+      .get('/api/address/', tokenConfig())
+      .then(res => 
+        resolve(res)
+      )
+    }, 500);
+  });
+}
+ 
+export const createAddress = (newAddress) => {
+  const body = { ...newAddress }
+  return new Promise(resolve => {
+    setTimeout(() => {
+    axios
+      .post('/api/address/', body, tokenConfig())
       .then(res => 
         resolve(res)
       )

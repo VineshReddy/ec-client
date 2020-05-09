@@ -45,6 +45,6 @@ export default function(state, action) {
         isLoading: false
       };
     default:
-      return state;
+      throw new Error(`Unhandled action type: ${action.type}`)
   }
 }

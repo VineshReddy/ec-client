@@ -22,7 +22,8 @@ const Addresses = () => {
       <h3>Addresses</h3>
       <div className="addresses-options">
         {
-          loading ? null : <div className="button but-col">Create Address</div>
+          loading ? null : 
+            <Link to="/user/address/createaddress"><div className="button but-col">Create Address</div></Link>
         }
       </div>
       {

@@ -24,6 +24,7 @@ class Main extends Component {
           <Route exact path='/user/orders' component={NotAuth}  /> 
           <Route exact path='/user/addresses' component={NotAuth}  /> 
           <Route exact  path='/user/cart/checkout' component={NotAuth}  /> 
+          <Route path='/user/address/createaddress' component={NotAuth}  /> 
 
           <Route path="*">
             <NoPageFound />

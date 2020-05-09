@@ -1,19 +1,11 @@
 import axios from 'axios';
-
-
-
-const config = {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
+import {tokenConfig} from './../utilities/tokenconfig.jsx'
 
 export const getOrders = () => {
-  const body = { userid : "5ea70642f27b6bf056eeebe8" };
   return new Promise(resolve => {
     setTimeout(() => {
     axios
-      .post('/api/order/', body, config )
+      .get('/api/order/', tokenConfig())
       .then(res => 
         resolve(res)
       )
@@ -23,11 +15,11 @@ export const getOrders = () => {
 
 
 export const placeOrder = (products, addressid) => {
-  const body = { userid : "5ea70642f27b6bf056eeebe8", products, addressid };
+  const body = { products, addressid };
   return new Promise(resolve => {
     setTimeout(() => {
     axios
-      .post('/api/order/placeorder', body, config )
+      .post('/api/order/placeorder', body, tokenConfig())
       .then(res => 
         resolve(res)
       )

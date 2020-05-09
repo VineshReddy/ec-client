@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { categories } from './../../stub/categories.jsx'
+import { categories } from './../../data/categories.jsx'
 
 const NavBar = () => {
 
