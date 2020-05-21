@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { footerList } from './../../stub/main.jsx';
+import { footerList } from './../../data/main.jsx';
 
 
 

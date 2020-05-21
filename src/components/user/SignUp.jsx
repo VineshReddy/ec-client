@@ -38,6 +38,7 @@ class SignUp extends Component {
       this.props.history.goBack()
       }
     )
+      .catch(err => this.setState(state => ({ msg: err.msg })))
   }
   render() {
     return(
@@ -45,6 +46,9 @@ class SignUp extends Component {
         <h3>Sign Up</h3>
         <div className="signup-form grid">
           <form onSubmit={this.handleSubmit} className="grid" >
+            {
+              this.state.msg?  <label className="error">{this.state.msg}</label> : null
+            }
             <label htmlFor="name">Name : </label>
             <input type="text" name="name" placeholder="name" onChange={this.handleChange}  required />
             <label htmlFor="email">Email Address : </label>

@@ -21,16 +21,17 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { name, email, password } = this.state
+    const { email, password } = this.state
 
-    const newUser = {
+    const user = {
       email,
       password
     }
-    login(newUser).then(res => {
+    login(user).then(res => {
       this.context.dispatch({ type: "LOGIN_SUCCESS", payload: res.data})
       this.props.history.goBack()
-    });
+    })
+      .catch(err => this.setState(state => ({ msg: err.msg })))
   }
   render() {
     return(
@@ -38,6 +39,9 @@ class SignIn extends Component {
         <h3>Sign In</h3>
         <div className="signup-form grid">
           <form onSubmit={this.handleSubmit} className="grid" >
+          {
+            this.state.msg?  <label className="error">{this.state.msg}</label> : null
+          }
             <label htmlFor="email">Email Address : </label>
             <input type="email" name="email" placeholder="example@email.com" onChange={this.handleChange}  required />
             <label htmlFor="password">Password : </label>

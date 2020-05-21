@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import './css/App.scss'
 import 'normalize.css'
@@ -6,12 +6,8 @@ import {AuthContext} from './contexts/AuthContext.jsx'
 import { getUser } from './actions/AuthActions.jsx'
 import Loading from './components/Loading.jsx'
 
-const AuthenticatedApp = React.lazy(() =>
-  import('./AuthenticatedApp'),
-)
-const UnAuthenticatedApp = React.lazy(() => 
-  import('./UnAuthenticatedApp')
-)
+const AuthenticatedApp = React.lazy(() => import('./AuthenticatedApp.jsx')) 
+const UnAuthenticatedApp = React.lazy(() => import('./UnAuthenticatedApp.jsx')) 
 
 
 function App() {
@@ -24,6 +20,9 @@ function App() {
       getUser(auth.token).then(res => 
         dispatch({ type: 'USER_LOADED', payload: res.data})
       )
+      .catch(err => 
+        dispatch({ type: 'AUTH_ERROR' })
+      )
     } 
     return () => mounted = false
   }, [])
@@ -32,12 +31,14 @@ function App() {
   return (
   <div className="App">
     <BrowserRouter>
-      <React.Suspense fallback={ <Loading /> }>
+      <>
+        <Suspense fallback={Loading} >
         { 
           isLoading ? <Loading /> :
           isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />
         }
-      </React.Suspense>
+        </Suspense>
+      </>
     </BrowserRouter>
     </div>
   );

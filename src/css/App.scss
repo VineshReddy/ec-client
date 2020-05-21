@@ -111,3 +111,13 @@ h3 {
 .show {  display:block; }
 .hide {  display:none; }
 
+
+.snackbar {
+	max-width: 250px;
+	text-align: center;
+	position: absolute;
+	bottom: 0%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}

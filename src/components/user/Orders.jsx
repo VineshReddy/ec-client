@@ -79,17 +79,17 @@ const RenderOrders = ({orders}) => {
 
 const RenderProducts = ({products}) => {
   const productItems = products.map(product => {
-    const { _id, id, image, name,  quantity, price } = product
+    const { _id, productid, image, name,  quantity, price } = product
     return (
       <section className="order-product grid" key={product._id}>
         <div className="product-image">
-          <Link to={'/product/' + id} >
+          <Link to={'/product/' + productid} >
             <img src={image} alt={name + " img"}  />
           </Link>
         </div>
         <div className="product-info">
           <div className="product-name">
-            <Link to={'/product/' + id} >
+            <Link to={'/product/' + productid} >
               {name} 
             </Link>
           </div>

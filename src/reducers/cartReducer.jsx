@@ -1,5 +1,3 @@
-//import { GET_ITEM_CART, ADD_ITEM_CART, DELETE_ITEM_CART,  CART_LOADING } from '../actionTypes'
-
 
 export default function(state, action) {
   switch (action.type) {
