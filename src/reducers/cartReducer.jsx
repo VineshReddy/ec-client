@@ -14,9 +14,11 @@ export default function(state, action) {
         loading: false
       }
     case "ADD_CART":
+      const productCount = state.products.filter(product => product.id == action.payload.id).length
+      const productExists = state.products.map(product => product.id == action.payload.id? {...product, quantity: product.quantity + 1}: product)
       return {
         ...state,
-        products: [action.payload, ...state.products]
+        products: productCount == 0? [action.payload, ...state.products]: productExists
       }
     case "DEL_CART":
       return {

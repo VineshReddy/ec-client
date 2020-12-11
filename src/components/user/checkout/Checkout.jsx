@@ -1,14 +1,39 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { Link, useHistory} from 'react-router-dom'
 import {placeOrder} from '../../../actions/OrderActions.jsx';
 import {CartContext} from '../../../contexts/CartContext.jsx';
 import {clearCart} from '../../../actions/CartActions.jsx';
+import {getAddresses} from './../../../actions/AddressActions.jsx';
 
 const Checkout = () => {
+
   let history = useHistory()
 
   const {cart, dispatch} = useContext(CartContext); 
   const {products} =  cart
+  /*  Temporary */
+  const [addressId, setAddressId] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+    let mounted = true
+    if(loading) getAddresses().then(res => {
+      let addrTest = res.data.filter(e => e.isdefault )
+      if(addrTest.length == 0  || addrTest[0] == "undefined") {
+        history.push("/user/addresses");
+        alert("You need a default address, as Checkout page is under construction")
+        return;
+      }
+
+
+      let addr = res.data.filter(e => e.isdefault)[0]._id 
+      setAddressId(addr)
+      setLoading(false)
+    })
+    return () => mounted = false
+  }, [])
+ 
+  /* End  Temporary */
 
   useEffect(() => {
     let mounted = true
@@ -16,9 +41,7 @@ const Checkout = () => {
   }, [])
 
   function handleOrder() {
-
-    const addressid =  "5ead1e7cd95abc5b79fe8cf8";
-    placeOrder(products, addressid).then(res => {
+    placeOrder(products, addressId).then(res => {
       clearCart(dispatch)
       history.push('/user/orders')
     })

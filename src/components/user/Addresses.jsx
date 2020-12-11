@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {getAddresses} from './../../actions/AddressActions.jsx';
+import {makeDefault} from './../../actions/AddressActions.jsx'
 import Loading from './../Loading.jsx'
 
 
@@ -37,11 +38,27 @@ const Addresses = () => {
 } 
 
 const RenderAddresses= ({addresses}) => {
-  const addressesItems = addresses.map( item => {
+    let [data, setData] = useState(addresses)
+
+  const handleChange = (id) => {
+    makeDefault(id)
+    setData(result => data.map((item) => {
+      if(item.isdefault && item._id != id) item.isdefault = false;
+      if(item._id == id) item.isdefault = true 
+      return item; 
+    }))
+  }
+
+  useEffect(() => {
+  }, [])
+ 
+    console.log(data)
+
+  const addressesItems = data.map( (item) => {
     const { _id, userid, name, mobile, pincode, landmark, address, isdefault } = item 
     return (
       <section className="address-item grid" key={_id}>
-        <div className="addr-default">
+        <div className="addr-default" onClick={()=>handleChange(_id)}>
           <div>Default</div>
           <div className="flex-center">
           {

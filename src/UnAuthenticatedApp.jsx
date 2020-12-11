@@ -7,6 +7,8 @@ import Products from './components/product/Products'
 import SignUp from './components/user/SignUp.jsx'
 import SignIn from './components/user/SignIn.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
+import HomePage from './components/HomePage.jsx'
+import SearchResults from './components/search/SearchResults.jsx'
 
 
 class Main extends Component {
@@ -15,6 +17,9 @@ class Main extends Component {
       <>
         <Header />
         <Switch>
+          <Route exact path='/' component={HomePage}  /> 
+          <Route path='/query/:queryName' component={SearchResults}  /> 
+
           <Route exact path='/category/:categoryName' component={Products}  /> 
           <Route exact path='/user/cart' component={Cart}  /> 
           <Route path='/user/signup' component={SignUp}  /> 

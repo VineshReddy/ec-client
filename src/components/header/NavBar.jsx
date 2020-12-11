@@ -1,9 +1,17 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { categories } from './../../data/categories.jsx'
 
-const NavBar = () => {
+const NavBar = ({products}) => {
+  const [query, setQuery] = useState('')
+
+  let history = useHistory()
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      history.push(`/query/${query}`);
+  }
 
   function toggleNav(){
     const body = document.getElementsByTagName("body")[0]
@@ -43,8 +51,8 @@ const NavBar = () => {
       <div className="nav-item search ">
           <div className="nav-item-content">
               <div className="search-container">
-                 <input className="searchbar" type="text" placeholder="Search.." name="search" />
-                 <button type="submit">
+                 <input className="searchbar" type="text" placeholder="Search.." name="search" onChange={e => setQuery(e.target.value)}  />
+                 <button type="submit "  onClick={(e) => handleSubmit(e)}>
                   <i className="fas fa-search"></i>
                  </button>
               </div>
@@ -79,7 +87,7 @@ const NavBar = () => {
         <Link to="/user/cart">
           <div className="nav-item-content">
             <i className="fa fa-shopping-cart"></i>
-            <span>Cart</span>
+            <span>Cart ({products.length})</span>
           </div>
         </Link>
       </div>

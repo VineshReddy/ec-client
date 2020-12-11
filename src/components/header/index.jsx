@@ -1,9 +1,17 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect, useLayoutEffect, useContext } from 'react'
+import { Link, useHistory} from 'react-router-dom'
 import NavBar from './NavBar.jsx'
+
+import {CartContext} from '../../contexts/CartContext';
+import {getCart} from './../../actions/CartActions.jsx';
+
+
 
 const Header = () => {
   const [size, setSize] = useState([0,0])
+
+  const {cart, dispatch} = useContext(CartContext); 
+  const {products} =  cart
 
   useEffect(() => {
     const navTop = document.querySelector(".navtop")
@@ -24,6 +32,18 @@ const Header = () => {
     navTopObserver.observe(navTop)
   }, [])
 
+
+  useEffect(() => {
+    const cartIcon = document.querySelector('.fa-shopping-cart')
+    cartIcon.classList.add("animate__animated","animate__swing")
+
+    const timer = setTimeout(() => {
+      cartIcon.classList.remove("animate__animated","animate__swing")
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, [cart])
+
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
@@ -35,14 +55,23 @@ const Header = () => {
 
   return (
     <header> 
-      <NavTop />
-      <NavBar />
+      <NavTop products={products} />
+      <NavBar products={products} />
     </header>
   )
 } 
 
 
-const NavTop = () => {
+const NavTop = ({products}) => {
+  const [query, setQuery] = useState('')
+
+  let history = useHistory()
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      history.push(`/query/${query}`);
+  }
+
   return (
     <div className="navtop grid">
       <div className="logo">
@@ -51,8 +80,8 @@ const NavTop = () => {
         </Link>
       </div>
       <div className="search">
-         <input className="searchbar" type="text" placeholder="Search.." name="search" />
-         <button type="submit">
+        <input className="searchbar" type="text" placeholder="Search.." name="search"  onChange={e => setQuery(e.target.value)} />
+        <button type="submit" onClick={(e) => handleSubmit(e)}>
           <i className="fas fa-search"></i>
          </button>
       </div>
@@ -65,7 +94,7 @@ const NavTop = () => {
       <div className="cart">
         <Link to="/user/cart">
           <i className="fas fa-shopping-cart"></i>
-          <span>Cart</span>
+          <span>Cart ({products.length})</span>
         </Link>
       </div>
     </div>

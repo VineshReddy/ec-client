@@ -12,6 +12,9 @@ import Checkout from './components/user/checkout/Checkout.jsx'
 import NoPageFound from './components/NoPageFound.jsx'
 import Loading from './components/Loading.jsx'
 
+import HomePage from './components/HomePage.jsx'
+import SearchResults from './components/search/SearchResults.jsx'
+
 
 
 const Main = () => {
@@ -19,6 +22,9 @@ const Main = () => {
     <>
       <Header />
       <Switch>
+        <Route exact path='/' component={HomePage}  /> 
+        <Route path='/query/:queryName' component={SearchResults}  /> 
+        
         <Route exact path='/category/:categoryName' component={Products}  /> 
         <Route exact path='/user' component={Account}  /> 
         

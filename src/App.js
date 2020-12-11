@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import './css/App.scss'
 import 'normalize.css'
+import 'animate.css'
 import {AuthContext} from './contexts/AuthContext.jsx' 
 import { getUser } from './actions/AuthActions.jsx'
 import Loading from './components/Loading.jsx'
@@ -26,6 +27,7 @@ function App() {
     } 
     return () => mounted = false
   }, [])
+
 
   const { isAuthenticated, isLoading } = auth
   return (

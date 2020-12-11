@@ -27,3 +27,19 @@ export const getProduct = (id) => {
   });
 }
  
+
+
+export const queryProducts = (queryName) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+    const body = {queryName} 
+    axios
+      .post('/api/product/query', body )
+      .then(res => 
+        resolve(res)
+      )
+    }, 500);
+  });
+}
+
+

@@ -6,7 +6,7 @@ import Product from './Product';
 
 import {CartContext} from '../../contexts/CartContext';
 import {addCart, delCart, incCart,  decCart} from './../../actions/CartActions.jsx';
-import {getProducts} from './../../actions/ProductActions.jsx';
+import {getProducts, queryProducts} from './../../actions/ProductActions.jsx';
 
 const ProductsList = ({productsList, setProductsList}) => {
   const {cart, dispatch} = useContext(CartContext); 
@@ -53,13 +53,13 @@ const ProductsList = ({productsList, setProductsList}) => {
   )
 }
 
-const Products = () => {
-  const { categoryName } = useParams()
+const SearchResults = () => {
+  const { queryName } = useParams()
   const [productsList, setProductsList] = useState(null); 
 
   useEffect(() => {
     let mounted = true
-    getProducts(categoryName).then(res => {
+    queryProducts(queryName).then(res => {
       if(mounted){
         setProductsList(res.data)
       }
@@ -80,7 +80,7 @@ const Products = () => {
   )
 }
 
-export default Products 
+export default SearchResults 
 
 
 {/*

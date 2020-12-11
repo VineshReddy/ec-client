@@ -26,4 +26,16 @@ export const createAddress = (newAddress) => {
     }, 500);
   });
 }
+
+export const makeDefault = (id) => {
+  const body = { id }
+  return new Promise(resolve => {
+    setTimeout(() => {
+      axios.post('/api/address/makedefault', body, tokenConfig())
+        .then(res=>
+          resolve(res)
+        )
+    }, 500)
+  }) 
+}
  
